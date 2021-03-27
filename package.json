@@ -1,0 +1,21 @@
+{
+  "name": "timothybu.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.8.2",
+    "vuepress": "^0.14.8",
+    "vuepress-theme-reco": "^1.6.6",
+    "watchpack": "^2.1.1",
+    "vuepress-plugin-autobar": "github:boboidream/vuepress-bar"
+  },
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev docs --temp .temp",
+    "docs:build": "vuepress build docs",
+    "deploy": "sh deploy.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
