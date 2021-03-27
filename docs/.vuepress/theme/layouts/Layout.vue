@@ -37,6 +37,7 @@ import Home from "@theme/components/Home.vue";
 import Navbar from "@theme/components/Navbar.vue";
 import Page from "@theme/components/Page.vue";
 import Sidebar from "@theme/components/Sidebar.vue";
+import LoadingPage from "@theme/components/loading/LoadingPage.vue";
 import { resolveSidebarItems } from "../util";
 
 export default {
@@ -47,6 +48,7 @@ export default {
     Page,
     Sidebar,
     Navbar,
+    LoadingPage,
   },
 
   data() {
@@ -54,7 +56,9 @@ export default {
       isSidebarOpen: false,
     };
   },
-
+  beforeMount() {
+    console.log(11111);
+  },
   computed: {
     shouldShowNavbar() {
       const { themeConfig } = this.$site;
