@@ -4,41 +4,26 @@
     :aria-labelledby="data.heroText !== null ? 'main-title' : null"
   >
     <header class="hero">
-      <img
-        v-if="data.heroImage"
-        :src="$withBase(data.heroImage)"
-        :alt="data.heroAlt || 'hero'"
-      >
-
-      <h1
-        v-if="data.heroText !== null"
-        id="main-title"
-      >
-        {{ data.heroText || $title || 'Hello' }}
+      <div id="hero-image">
+        <a :href="data.actionLink">
+          <p id="hero-image-button">前往导航页</p>
+          <img
+            v-if="data.heroImage"
+            :src="$withBase(data.heroImage)"
+            :alt="data.heroAlt || 'hero'"
+          />
+        </a>
+      </div>
+      <h1 v-if="data.heroText !== null" id="main-title">
+        {{ data.heroText || $title || "Hello" }}
       </h1>
 
-      <p
-        v-if="data.tagline !== null"
-        class="description"
-      >
-        {{ data.tagline || $description || 'Welcome to your VuePress site' }}
-      </p>
-
-      <p
-        v-if="data.actionText && data.actionLink"
-        class="action"
-      >
-        <NavLink
-          class="action-button"
-          :item="actionLink"
-        />
+      <p v-if="data.tagline !== null" class="description">
+        {{ data.tagline || $description || "Welcome to your VuePress site" }}
       </p>
     </header>
 
-    <div
-      v-if="data.features && data.features.length"
-      class="features"
-    >
+    <div v-if="data.features && data.features.length" class="features">
       <div
         v-for="(feature, index) in data.features"
         :key="index"
@@ -51,51 +36,74 @@
 
     <Content class="theme-default-content custom" />
 
-    <div
-      v-if="data.footer"
-      class="footer"
-    >
+    <div v-if="data.footer" class="footer">
       {{ data.footer }}
     </div>
   </main>
 </template>
 
 <script>
-import NavLink from '@theme/components/NavLink.vue'
+import NavLink from "@theme/components/NavLink.vue";
 
 export default {
-  name: 'Home',
+  name: "Home",
 
   components: { NavLink },
 
   computed: {
-    data () {
-      return this.$page.frontmatter
+    data() {
+      return this.$page.frontmatter;
     },
 
-    actionLink () {
+    actionLink() {
       return {
         link: this.data.actionLink,
-        text: this.data.actionText
-      }
-    }
-  }
-}
+        text: this.data.actionText,
+      };
+    },
+  },
+};
 </script>
 
 <style lang="stylus">
 .home
+  user-select none
   padding $navbarHeight 2rem 0
   max-width $homePageWidth
   margin 0px auto
   display block
   .hero
     text-align center
-    img
-      max-width: 100%
-      max-height 280px
-      display block
+    #hero-image
+      z-index 1
       margin 3rem auto 1.5rem
+      max-height 500px
+      max-width 1000px
+      overflow hidden
+      position relative
+      #hero-image-button
+        z-index -1
+        width 100%
+        position absolute
+        font-size 3rem
+        position absolute
+        top 0
+        bottom 0
+        right 0
+        left 0
+        height 3rem
+        width 100%
+        margin auto
+        line-height 3rem
+      img
+        width 100%
+        height 100%
+        transform scale(1.2)
+        transition all 0.5s ease-in-out 0s
+        // transition filter 1s ease-in-out 0s
+        &:hover
+          opacity 0.3
+          filter blur(5px)
     h1
       font-size 3rem
     h1, .description, .action
@@ -157,9 +165,13 @@ export default {
     padding-left 1.5rem
     padding-right 1.5rem
     .hero
-      img
-        max-height 210px
-        margin 2rem auto 1.2rem
+      #hero-image
+        #hero-image-button
+          font-size 1.5rem
+          height 1.5rem
+          line-height 1.5rem
+        img
+          max-height 210px
       h1
         font-size 2rem
       h1, .description, .action
