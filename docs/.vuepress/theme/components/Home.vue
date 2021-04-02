@@ -5,14 +5,14 @@
   >
     <header class="hero">
       <div id="hero-image">
-        <a :href="data.actionLink">
+        <RouterLink to="/导航.html">
           <p id="hero-image-button">前往导航页</p>
           <img
             v-if="data.heroImage"
             :src="$withBase(data.heroImage)"
             :alt="data.heroAlt || 'hero'"
           />
-        </a>
+        </RouterLink>
       </div>
       <h1 v-if="data.heroText !== null" id="main-title">
         {{ data.heroText || $title || "Hello" }}
