@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "devDependencies": {
+    "@mdi/font": "^5.9.55",
     "@vuepress/plugin-back-to-top": "^1.8.2",
     "vuepress": "^0.14.8",
+    "vuepress-plugin-autobar": "github:boboidream/vuepress-bar",
+    "vuepress-plugin-meting": "^0.2.3",
     "vuepress-theme-reco": "^1.6.6",
-    "watchpack": "^2.1.1",
-    "vuepress-plugin-autobar": "github:boboidream/vuepress-bar"
+    "vuetify": "^2.4.8",
+    "watchpack": "^2.1.1"
   },
   "main": "index.js",
   "scripts": {

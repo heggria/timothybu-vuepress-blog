@@ -3,6 +3,11 @@
 # 确保脚本抛出遇到的错误
 set -e
 
+# 时间生成器
+cur_dateTime="`date +%Y-%m-%d,%H:%m`"
+deploy="deploy: "
+str1="$deploy$cur_dateTime"
+
 # 生成静态文件
 npm run docs:build
 
@@ -14,7 +19,10 @@ cd docs/.vuepress/dist
 
 git init
 git add -A
-git commit -m 'deploy'
+
+
+
+git commit -m "$str1"
 
 # 如果发布到 https://<USERNAME>.github.io  USERNAME=你的用户名 
 git push -f git@github.com:timothybu/timothybu.github.io.git master

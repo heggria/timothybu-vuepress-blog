@@ -4,11 +4,39 @@ module.exports = {
   // 注入到当前页面的 HTML <head> 中的标签
   head: [
     ["link", { rel: "icon", href: "/favicon.ico" }], // 增加一个自定义的 favicon(网页标签的图标)
+    [
+      [
+        "link",
+        {
+          rel: "stylesheet",
+          href: `https://fonts.cat.net/css?family=Roboto:100,300,400,500,700,900|Material+Icons`,
+        },
+      ],
+      [
+        "link",
+        {
+          rel: "stylesheet",
+          href: `https://use.fontawesome.com/releases/v5.1.0/css/all.css`,
+        },
+      ],
+    ],
+    /*[
+      "link",
+      {
+        rel: "stylesheet",
+        href: `https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css`,
+      },
+    ],
+
+    ["script", { src: `https://cdn.jsdelivr.net/npm/vue/dist/vue.js` }],
+    ["script", { src: `https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js` }],
+    */
   ],
   markdown: {
     lineNumbers: false, // 代码块显示行号
   },
-  plugins: ["autobar"],
+
+  plugins: ["meting", "autobar"],
   themeConfig: {
     // 默认值是 true 。设置为 false 来禁用所有页面的 下一篇 链接
     nextLinks: true,

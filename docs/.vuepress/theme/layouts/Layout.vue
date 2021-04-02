@@ -29,6 +29,18 @@
         <slot name="page-bottom" />
       </template>
     </Page>
+    <!--
+    <Meting
+      server="netease"
+      type="playlist"
+      mid="390778171"
+      :lrc-type="3"
+      :mini="true"
+      :fixed="true"
+      :theme="'#3DB6A4'"
+      :volume="0.5"
+    />
+    -->
   </div>
 </template>
 
@@ -42,7 +54,6 @@ import { resolveSidebarItems } from "../util";
 
 export default {
   name: "Layout",
-
   components: {
     Home,
     Page,
@@ -141,8 +152,24 @@ export default {
 };
 </script>
 
-<style scoped>
-.my-nav-gre {
-  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-}
+<style lang="stylus">
+*
+  ::-webkit-scrollbar
+    width 0.6rem
+    background-color #ddd
+  ::-webkit-scrollbar-track
+    background-color #ddd
+  ::-webkit-scrollbar-thumb
+    background #3DB6A4
+  /*
+  ::-webkit-scrollbar-button
+    :start
+      background url(./imgs/up.png) no-repeat
+      background-size 12px 12px
+    :end
+      background url(./imgs/down.png) no-repeat
+      background-size 12px 12px
+  */
+.my-nav-gre
+  background-image linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%)
 </style>
