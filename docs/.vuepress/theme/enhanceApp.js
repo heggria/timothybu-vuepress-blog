@@ -1,15 +1,10 @@
 import Vuex from "vuex";
 import store from "./store/index.js";
-import Vuetify from "vuetify";
-import "vuetify/dist/vuetify.min.css";
+import ElementUI from "element-ui";
+import locale from "element-ui/lib/locale/lang/en";
 
-export default ({
-  Vue,
-  options, // the options for the root Vue instance
-  router, // the router instance for the app
-  siteData, // site metadata
-}) => {
+export default ({ Vue }) => {
   Vue.use(Vuex);
   Vue.mixin({ store: store });
-  Vue.use(Vuetify);
+  Vue.use(ElementUI, { locale });
 };

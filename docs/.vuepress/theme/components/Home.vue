@@ -4,9 +4,18 @@
     :aria-labelledby="data.heroText !== null ? 'main-title' : null"
   >
     <header class="hero">
-      <div id="hero-image">
+      <div
+        id="hero-image"
+        :style="{ transform: transformData, transition: time }"
+        ref="image"
+      >
         <RouterLink to="/导航.html">
-          <p id="hero-image-button">前往导航页</p>
+          <p
+            id="hero-image-button"
+            :style="{ transform: translateData, transition: time }"
+          >
+            前往导航页
+          </p>
           <img
             v-if="data.heroImage"
             :src="$withBase(data.heroImage)"
@@ -49,7 +58,9 @@ export default {
   name: "Home",
 
   components: { NavLink },
-
+  data: () => {
+    return { transformData: "", translateData: "", time: "0.5s" };
+  },
   computed: {
     data() {
       return this.$page.frontmatter;
@@ -61,6 +72,25 @@ export default {
         text: this.data.actionText,
       };
     },
+  },
+  mounted() {
+    document.getElementById("hero-image").onmousemove = (e) => {
+      let h = parseFloat(window.getComputedStyle(this.$refs.image).height);
+      let w = parseFloat(window.getComputedStyle(this.$refs.image).width);
+      let x = ((e.offsetX - w / 2) / w).toFixed(6);
+      let y = (-(e.offsetY - h / 2) / h).toFixed(6);
+      let d = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)) * 10;
+      this.transformData = "rotate3d(" + y + ", " + x + ", 0, " + d + "deg)";
+      this.translateData = "translate3d(" + x * 15 + "px, " + -y * 15 + "px,0)";
+      this.time = "0s";
+    };
+    document.getElementById("hero-image").onmouseenter = (e) => {
+      this.transformData = "rotate3d(0, 0, 0, 0deg)";
+    };
+    document.getElementById("hero-image").onmouseout = (e) => {
+      this.transformData = "rotate3d(0, 0, 0, 0deg)";
+      this.time = "0.8s";
+    };
   },
 };
 </script>
@@ -74,6 +104,7 @@ export default {
   display block
   .hero
     text-align center
+    perspective 1000px
     #hero-image
       z-index 1
       margin 3rem auto 1.5rem
@@ -100,7 +131,7 @@ export default {
         height 100%
         transform scale(1.2)
         transition all 0.5s ease-in-out 0s
-        // transition filter 1s ease-in-out 0s
+        /* transition filter 1s ease-in-out 0s*/
         &:hover
           opacity 0.3
           filter blur(5px)
