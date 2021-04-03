@@ -59,7 +59,11 @@ export default {
 
   components: { NavLink },
   data: () => {
-    return { transformData: "", translateData: "", time: "0.5s" };
+    return {
+      transformData: "",
+      translateData: "",
+      time: "0.5s",
+    };
   },
   computed: {
     data() {
