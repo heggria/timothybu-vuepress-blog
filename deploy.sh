@@ -20,8 +20,6 @@ cd docs/.vuepress/dist
 git init
 git add -A
 
-
-
 git commit -m "$str1"
 
 # 如果发布到 https://<USERNAME>.github.io  USERNAME=你的用户名 
